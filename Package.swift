@@ -23,6 +23,7 @@ let package = Package(
             dependencies: []),
         .testTarget(
             name: "NetworkKitTests",
-            dependencies: ["NetworkKit"]),
+            dependencies: ["NetworkKit"],
+            resources: [.copy("Resources/featuresList1.json")]),
     ]
 )
