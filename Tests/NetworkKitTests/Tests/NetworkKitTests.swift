@@ -25,9 +25,12 @@ final class NetworkKitTests: XCTestCase {
             }
             expectation.fulfill()
         }
-
-        wait(for: [expectation], timeout: 1.0)
+        wait(for: [expectation], timeout: Constants.defaultTimeout)
     }
 
     private let parser = Parser()
+}
+
+private enum Constants {
+    static let defaultTimeout = 1.0
 }
