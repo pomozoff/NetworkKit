@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum NetworkError: Error {
+public enum NetworkError: Error {
     case authRequired
     case accessDenied
     case invalidUrl
