@@ -6,11 +6,16 @@ final class NetworkKitTests: XCTestCase {
         let featureList = TestAPI.featureList
         let expectation = XCTestExpectation(description: "Fetch feature list")
 
-        let session = URLSessionMock()
-        session.data = Bundle.module.readData(from: "featuresList1.json")
-        session.response = HTTPURLResponse(url: featureList.url!, statusCode: 200, httpVersion: nil, headerFields: nil)
+        let url = featureList.url!
+        let data = Bundle.module.readData(from: "featuresList1.json")
+        let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)
+        URLProtocolMock.mockURLs = [url: (nil, data, response)]
 
-        let provider = NetworkKit.Provider<TestAPI>(urlSession: session)
+        let sessionConfiguration = URLSessionConfiguration.ephemeral
+        sessionConfiguration.protocolClasses = [URLProtocolMock.self]
+        let mockSession = URLSession(configuration: sessionConfiguration)
+
+        let provider = NetworkKit.Provider<TestAPI>(urlSession: mockSession)
         provider.request(featureList) { [unowned self] result in
             switch result {
             case let .success(response):
