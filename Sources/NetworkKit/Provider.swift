@@ -7,14 +7,14 @@
 
 import Foundation
 
-class Provider<T: Target> {
-    typealias NetworkResult = Result<Response, Error>
+public class Provider<T: Target> {
+    public typealias NetworkResult = Result<Response, Error>
 
-    init(urlSession: URLSession = URLSession.shared) {
+    public init(urlSession: URLSession = URLSession.shared) {
         self.urlSession = urlSession
     }
 
-    func request(_ target: T, completion: @escaping (NetworkResult) -> Void) {
+    public func request(_ target: T, completion: @escaping (NetworkResult) -> Void) {
         guard let url = target.url else {
             return completion(.failure(NetworkError.invalidUrl))
         }

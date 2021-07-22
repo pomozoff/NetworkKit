@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Response {
+public struct Response {
     let data: Data
     let statusCode: Int
 }
