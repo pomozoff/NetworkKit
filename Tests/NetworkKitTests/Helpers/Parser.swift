@@ -8,9 +8,7 @@
 import Foundation
 @testable import NetworkKit
 
-class Parser {
-    public init() {}
-}
+class Parser {}
 
 extension Parser {
     func parse<T>(_ response: Response) throws -> T where T: Decodable {
