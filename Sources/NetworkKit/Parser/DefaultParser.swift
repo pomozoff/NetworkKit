@@ -1,17 +1,18 @@
 //
-//  Parser.swift
-//  
+//  DefaultParser.swift
+//  LeoCalc
 //
-//  Created by Anton Pomozov on 15.07.2021.
+//  Created by Anton Pomozov on 22.07.2021.
 //
 
 import Foundation
-@testable import NetworkKit
 
-class Parser {}
+public class DefaultParser {
+    public init() {}
+}
 
-extension Parser {
-    func parse<T>(_ response: Response) throws -> T where T: Decodable {
+extension DefaultParser: Parsable {
+    public func parse<T>(_ response: Response) throws -> T where T: Decodable {
         switch response.statusCode {
         case 200 ..< 300:
             return try JSONDecoder().decode(T.self, from: response.data)
