@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "CommonKit",
+        "repositoryURL": "https://github.com/pomozoff/CommonKit.git",
+        "state": {
+          "branch": "main",
+          "revision": "8d61faa0cdc4810dd8af851bd57701d09082091d",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

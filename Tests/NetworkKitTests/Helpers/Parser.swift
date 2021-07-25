@@ -17,16 +17,16 @@ extension Parser {
             return try JSONDecoder().decode(T.self, from: response.data)
 
         case 401:
-            throw NetworkError.authRequired
+            throw NetworkError(code: .authRequired(response.request))
 
         case 403:
-            throw NetworkError.accessDenied
+            throw NetworkError(code: .accessDenied(response.request))
 
         case 400 ..< 500:
-            throw NetworkError.invalidRequest
+            throw NetworkError(code: .invalidRequest(response.request))
 
         default:
-            throw NetworkError.internalError
+            throw NetworkError(code: .internalError(response.request))
         }
     }
 }

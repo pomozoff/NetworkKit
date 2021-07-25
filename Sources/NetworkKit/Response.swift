@@ -8,6 +8,7 @@
 import Foundation
 
 public struct Response {
+    public let request: URLRequest
     public let data: Data
     public let statusCode: Int
 }
